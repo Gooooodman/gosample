@@ -14,6 +14,10 @@ func (r *rect) perim() int {
     return 2*r.width + 2*r.height
 }
 
+func test(r *rect) {
+    fmt.Println(*r)
+}
+
 func main() {
     r := rect{width: 10, height: 5}
 
@@ -23,4 +27,7 @@ func main() {
     rp := &r
     fmt.Println("area:", rp.area())
     fmt.Println("perim:", rp.perim())
+
+    test(&r)
+    test(rp)
 }
