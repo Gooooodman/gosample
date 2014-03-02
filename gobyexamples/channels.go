@@ -1,14 +1,20 @@
 package main
 
 import "fmt"
+import "time"
+import "strconv"
 
 func main() {
     messages := make(chan string)
 
     go func() {
-        messages <- "ping"
+        for i := 0; i < 10; i++ {
+            messages <- "ping" + strconv.Itoa(i)
+            time.Sleep(time.Second)
+        }
     }()
 
-    msg := <-messages
-    fmt.Println(msg)
+    for i := 0; i < 10; i++ {
+        fmt.Println(<-messages)
+    }
 }
