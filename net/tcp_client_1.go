@@ -25,13 +25,15 @@ func main() {
             os.Exit(1)
         }
 
-        var buf [512]byte
-        n, err := conn.Read(buf[0:])
-        if err != nil {
-            fmt.Fprintf(os.Stderr, "Fatal error: %s", err.Error())
-            os.Exit(1)
-        }
-        fmt.Println(string(buf[0:n]))
+        /*
+           var buf [512]byte
+           n, err := conn.Read(buf[0:])
+           if err != nil {
+               fmt.Fprintf(os.Stderr, "Fatal error: %s", err.Error())
+               os.Exit(1)
+           }
+           fmt.Println(string(buf[0:n]))
+        */
     }
     os.Exit(0)
 }
