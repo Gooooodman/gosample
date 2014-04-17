@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{DD6AED95-E3F8-4D5A-BAD2-AC23931FE97B}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>soci_core</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">soci_core.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">soci_core_3_2</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">soci_core.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">soci_core_3_2</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">soci_core.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">soci_core_3_2</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">soci_core.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">soci_core_3_2</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;SOCI_ABI_VERSION="3_2";_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNING;_SCL_SECURE_NO_WARNINGS;DBUG_OFF;SOCI_LIB_PREFIX="soci_";SOCI_LIB_SUFFIX=".dll";CMAKE_INTDIR="Debug";SOCI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;SOCI_ABI_VERSION=\"3_2\";_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNING;_SCL_SECURE_NO_WARNINGS;DBUG_OFF;SOCI_LIB_PREFIX=\"soci_\";SOCI_LIB_SUFFIX=\".dll\";CMAKE_INTDIR=\"Debug\";SOCI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/vs2010/lib/Debug/soci_core_3_2.lib</ImportLibrary>
+      <ProgramDataBaseFile>../bin/Debug/soci_core_3_2.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;SOCI_ABI_VERSION="3_2";_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNING;_SCL_SECURE_NO_WARNINGS;DBUG_OFF;SOCI_LIB_PREFIX="soci_";SOCI_LIB_SUFFIX=".dll";CMAKE_INTDIR="Release";SOCI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;SOCI_ABI_VERSION=\"3_2\";_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNING;_SCL_SECURE_NO_WARNINGS;DBUG_OFF;SOCI_LIB_PREFIX=\"soci_\";SOCI_LIB_SUFFIX=\".dll\";CMAKE_INTDIR=\"Release\";SOCI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ImportLibrary>../lib/Release/soci_core_3_2.lib</ImportLibrary>
+      <ProgramDataBaseFile>../bin/Release/soci_core_3_2.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;SOCI_ABI_VERSION="3_2";_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNING;_SCL_SECURE_NO_WARNINGS;DBUG_OFF;SOCI_LIB_PREFIX="soci_";SOCI_LIB_SUFFIX=".dll";CMAKE_INTDIR="MinSizeRel";SOCI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;SOCI_ABI_VERSION=\"3_2\";_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNING;_SCL_SECURE_NO_WARNINGS;DBUG_OFF;SOCI_LIB_PREFIX=\"soci_\";SOCI_LIB_SUFFIX=\".dll\";CMAKE_INTDIR=\"MinSizeRel\";SOCI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ImportLibrary>D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/vs2010/lib/MinSizeRel/soci_core_3_2.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/vs2010/bin/MinSizeRel/soci_core_3_2.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;SOCI_ABI_VERSION="3_2";_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNING;_SCL_SECURE_NO_WARNINGS;DBUG_OFF;SOCI_LIB_PREFIX="soci_";SOCI_LIB_SUFFIX=".dll";CMAKE_INTDIR="RelWithDebInfo";SOCI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;SOCI_ABI_VERSION=\"3_2\";_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNING;_SCL_SECURE_NO_WARNINGS;DBUG_OFF;SOCI_LIB_PREFIX=\"soci_\";SOCI_LIB_SUFFIX=\".dll\";CMAKE_INTDIR=\"RelWithDebInfo\";SOCI_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/vs2010/lib/RelWithDebInfo/soci_core_3_2.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/vs2010/bin/RelWithDebInfo/soci_core_3_2.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version>
+      </Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\core\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake 2.8\bin\cmake.exe" -HD:/Workspace/SCADAV4_SUD/third-party/02.SOCI -BD:/Workspace/SCADAV4_SUD/third-party/02.SOCI/vs2010 --check-stamp-file D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/core/CMakeLists.txt;D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\core\CMakeLists.txt;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\FindThreads.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CMakeConfigurableFile.in;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\FindPackageMessage.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CMakeParseArguments.cmake;D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\core\soci_backends_config.h.in;D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\core\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core\CMakeFiles\generate.stamp</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake 2.8\bin\cmake.exe" -HD:/Workspace/SCADAV4_SUD/third-party/02.SOCI -BD:/Workspace/SCADAV4_SUD/third-party/02.SOCI/vs2010 --check-stamp-file D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/core/CMakeLists.txt;D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\core\CMakeLists.txt;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\FindThreads.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CMakeConfigurableFile.in;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\FindPackageMessage.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CMakeParseArguments.cmake;D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\core\soci_backends_config.h.in;D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\core\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core\CMakeFiles\generate.stamp</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake 2.8\bin\cmake.exe" -HD:/Workspace/SCADAV4_SUD/third-party/02.SOCI -BD:/Workspace/SCADAV4_SUD/third-party/02.SOCI/vs2010 --check-stamp-file D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/core/CMakeLists.txt;D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\core\CMakeLists.txt;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\FindThreads.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CMakeConfigurableFile.in;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\FindPackageMessage.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CMakeParseArguments.cmake;D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\core\soci_backends_config.h.in;D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\core\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core\CMakeFiles\generate.stamp</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake 2.8\bin\cmake.exe" -HD:/Workspace/SCADAV4_SUD/third-party/02.SOCI -BD:/Workspace/SCADAV4_SUD/third-party/02.SOCI/vs2010 --check-stamp-file D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/core/CMakeLists.txt;D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\core\CMakeLists.txt;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\FindThreads.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CheckIncludeFiles.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CMakeConfigurableFile.in;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\FindPackageMessage.cmake;C:\Program Files\CMake 2.8\share\cmake-2.8\Modules\CMakeParseArguments.cmake;D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\core\soci_backends_config.h.in;D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\core\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\Workspace\SCADAV4_SUD\third-party\02.SOCI\vs2010\core\CMakeFiles\generate.stamp</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\core\backend-loader.h" />
+    <ClInclude Include="..\..\core\blob-exchange.h" />
+    <ClInclude Include="..\..\core\blob.h" />
+    <ClInclude Include="..\..\core\boost-fusion.h" />
+    <ClInclude Include="..\..\core\boost-gregorian-date.h" />
+    <ClInclude Include="..\..\core\boost-optional.h" />
+    <ClInclude Include="..\..\core\boost-tuple.h" />
+    <ClInclude Include="..\..\core\connection-parameters.h" />
+    <ClInclude Include="..\..\core\connection-pool.h" />
+    <ClInclude Include="..\..\core\error.h" />
+    <ClInclude Include="..\..\core\exchange-traits.h" />
+    <ClInclude Include="..\..\core\into-type.h" />
+    <ClInclude Include="..\..\core\into.h" />
+    <ClInclude Include="..\..\core\once-temp-type.h" />
+    <ClInclude Include="..\..\core\prepare-temp-type.h" />
+    <ClInclude Include="..\..\core\procedure.h" />
+    <ClInclude Include="..\..\core\query_transformation.h" />
+    <ClInclude Include="..\..\core\ref-counted-prepare-info.h" />
+    <ClInclude Include="..\..\core\ref-counted-statement.h" />
+    <ClInclude Include="..\..\core\row-exchange.h" />
+    <ClInclude Include="..\..\core\row.h" />
+    <ClInclude Include="..\..\core\rowid-exchange.h" />
+    <ClInclude Include="..\..\core\rowid.h" />
+    <ClInclude Include="..\..\core\rowset.h" />
+    <ClInclude Include="..\..\core\session.h" />
+    <ClInclude Include="..\..\core\soci-backend.h" />
+    <ClInclude Include="..\..\core\soci-config.h" />
+    <ClInclude Include="..\..\core\soci-platform.h" />
+    <ClInclude Include="..\..\core\soci-simple.h" />
+    <ClInclude Include="..\..\core\soci.h" />
+    <ClInclude Include="..\..\core\statement.h" />
+    <ClInclude Include="..\..\core\transaction.h" />
+    <ClInclude Include="..\..\core\type-conversion-traits.h" />
+    <ClInclude Include="..\..\core\type-conversion.h" />
+    <ClInclude Include="..\..\core\type-holder.h" />
+    <ClInclude Include="..\..\core\type-ptr.h" />
+    <ClInclude Include="..\..\core\unsigned-types.h" />
+    <ClInclude Include="..\..\core\use-type.h" />
+    <ClInclude Include="..\..\core\use.h" />
+    <ClInclude Include="..\..\core\values-exchange.h" />
+    <ClInclude Include="..\..\core\values.h" />
+    <ClInclude Include="..\..\core\version.h" />
+    <ClCompile Include="..\..\core\backend-loader.cpp" />
+    <ClCompile Include="..\..\core\blob.cpp" />
+    <ClCompile Include="..\..\core\connection-parameters.cpp" />
+    <ClCompile Include="..\..\core\connection-pool.cpp" />
+    <ClCompile Include="..\..\core\error.cpp" />
+    <ClCompile Include="..\..\core\into-type.cpp" />
+    <ClCompile Include="..\..\core\once-temp-type.cpp" />
+    <ClCompile Include="..\..\core\prepare-temp-type.cpp" />
+    <ClCompile Include="..\..\core\procedure.cpp" />
+    <ClCompile Include="..\..\core\ref-counted-prepare-info.cpp" />
+    <ClCompile Include="..\..\core\ref-counted-statement.cpp" />
+    <ClCompile Include="..\..\core\row.cpp" />
+    <ClCompile Include="..\..\core\rowid.cpp" />
+    <ClCompile Include="..\..\core\session.cpp" />
+    <ClCompile Include="..\..\core\soci-simple.cpp" />
+    <ClCompile Include="..\..\core\statement.cpp" />
+    <ClCompile Include="..\..\core\transaction.cpp" />
+    <ClCompile Include="..\..\core\use-type.cpp" />
+    <ClCompile Include="..\..\core\values.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:/Workspace/SCADAV4_SUD/third-party/02.SOCI/vs2010/ZERO_CHECK.vcxproj">
+      <Project>7C8C32B1-2AF7-4EF4-BC96-F14B1486574F</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
