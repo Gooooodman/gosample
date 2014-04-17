@@ -1,8 +1,9 @@
 package main
 
 import (
-    "convertor"
+    "flag"
     "fmt"
+    "github.com/fengbaoxp/gosample/vssolution/convertor"
 )
 
 func main() {
@@ -14,11 +15,10 @@ func main() {
         return
     }
 
-    convertor := &Convertor{*location}
-    //err := convertor.ValidateLocation()
-    //if nil != err {
-    //    fmt.Println(err.Error())
-    //    return
-    //}
-
+    c, err := convertor.NewConvertor(*location)
+    if err != nil {
+        fmt.Println(err.Error())
+        return
+    }
+    c.RemoveCMake()
 }
