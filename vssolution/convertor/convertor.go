@@ -8,10 +8,12 @@ import (
     "os"
     "path/filepath"
     "regexp"
+    "strings"
 )
 
 type info struct {
-    location string // 要转换的根目录
+    location    string // 要转换的解决方案目录
+    prefix      string // 转换内容依据的根目录
 }
 
 // Convertor 一个VS解决方案下项目中绝对路径转换相对路径的转换器
@@ -20,37 +22,51 @@ type Convertor struct {
 }
 
 // 工厂方法
-func NewConvertor(location string) (*Convertor, error) {
-    file, err := os.Open(location)
-    msg := "参数[location]值必须是一个存在的文件夹。"
+func NewConvertor(location, prefix string) (*Convertor, error) {
+    err := validateDir(location, "location")
+    if err != nil {
+        return nil, err
+    }
+    err = validateDir(prefix, "prefix")
+    if err != nil {
+        return nil, err
+    }
+    return &Convertor{&info{location, prefix}}, nil
+}
+
+func validateDir(dir, dirtype string) error {
+    msg := fmt.Sprintf("参数[%s]值必须是一个存在的文件夹。", dirtype)
+    file, err := os.Open(dir)
     if os.IsNotExist(err) {
-        return nil, errors.New(msg)
+        return errors.New(msg)
     }
     defer file.Close()
 
     fi, err := file.Stat()
     if err != nil {
-        return nil, errors.New(msg)
+        return errors.New(msg)
     }
 
     if !fi.IsDir() {
-        return nil, errors.New(msg)
+        return errors.New(msg)
     }
-    return &Convertor{&info{location}}, nil
-}
-
-// 返回location值
-func (c *Convertor) Location() string {
-    return c.location
+    return nil
 }
 
 // 递归删除目录下所有项目文件中CMake相关内容
 func (c *Convertor) RemoveCMake() error {
-    return removeDirCMake(c.location)
+    return walkPath(c.location, removeCMake)
 }
 
-// 递归删除目录下所有文件中的CMake相关内容
-func removeDirCMake(location string) error {
+func (c *Convertor) ConvertorPath() error {
+    return walkPath(c.location, c.convertPath)
+}
+
+//文件处理函数原型
+type processFileFunc func(filename string) error
+
+// 递归目录
+func walkPath(location string, processFileFn processFileFunc) error {
     fmt.Println("处理路径[" + location + "]")
     f, err := os.Open(location)
     if err != nil {
@@ -65,9 +81,12 @@ func removeDirCMake(location string) error {
     for _, fileInfo := range list {
         err = nil
         if fileInfo.IsDir() {
-            err = removeDirCMake(filepath.Join(location, fileInfo.Name()))
-        } else if ".vcxproj" == filepath.Ext(fileInfo.Name()) {
-            err = removeOneCMake(filepath.Join(location, fileInfo.Name()))
+            err = walkPath(filepath.Join(location, fileInfo.Name()), processFileFn)
+        } else {
+            ext := filepath.Ext(fileInfo.Name())
+            if ".vcxproj" == ext || ".filters" == ext {
+                err = processFileFn(filepath.Join(location, fileInfo.Name()))
+            }
         }
         if err != nil {
             buffer.WriteString(err.Error())
@@ -80,19 +99,71 @@ func removeDirCMake(location string) error {
 }
 
 // 删除一个文件的Cmake相关内容
-func removeOneCMake(fname string) error {
-    fmt.Println("处理文件[" + fname + "]")
+func removeCMake(fname string) error {
+    fmt.Println("CMake处理文件[" + fname + "]")
     oldContent, err := ioutil.ReadFile(fname)
     if err != nil {
         return err
     }
-    //    fmt.Println(string(oldContent))
-    re := regexp.MustCompile(`<ItemGroup>\s*<CustomBuild Include=\".*CMakeLists.txt\">[\s|\S]*</CustomBuild>\s*</ItemGroup>`)
-    newContent := re.ReplaceAll(oldContent, []byte(""))
-    //    fmt.Println(string(newContent))
+    newContent := removeCMakeContent(oldContent)
     err = ioutil.WriteFile(fname, newContent, os.ModePerm)
     if err != nil {
         return err
     }
     return nil
+}
+
+// 替换文本内容
+func removeCMakeContent(oldContent []byte) []byte {
+    //    fmt.Println(string(oldContent))
+    re := regexp.MustCompile(`<ItemGroup>\s*<CustomBuild Include=\".*CMakeLists.txt\">[\s|\S]*</CustomBuild>\s*</ItemGroup>`)
+    newContent := re.ReplaceAll(oldContent, []byte(""))
+    //    fmt.Println(string(newContent))
+    return newContent
+}
+
+//绝对路径转换为相对路径
+func (c *Convertor) convertPath(filename string) error {
+    fmt.Println("Convert处理文件[" + filename + "]")
+    oldContent, err := ioutil.ReadFile(filename)
+    if err != nil {
+        return err
+    }
+    currentPath := filepath.Dir(filename)
+    newContent, err := convertPathContent(c.prefix, currentPath, string(oldContent))
+    if err != nil {
+        return err
+    }
+    err = ioutil.WriteFile(filename, []byte(newContent), os.ModePerm)
+    if err != nil {
+        return err
+    }
+    return nil
+}
+
+//替换文本内容
+func convertPathContent(rootPath, currentPath string, oldContent string) (string, error) {
+    currentPath = strings.Replace(currentPath, `\`, `/`, -1)
+    newRootPath := strings.Replace(rootPath, `\`, `/`, -1)
+    rootPath = strings.Replace(rootPath, `\`, `\\`, -1)
+    sreg := "((" + rootPath + "|" + newRootPath + ")[^< ;]*)[< ;]"
+    fmt.Println(sreg)
+    re := regexp.MustCompile(sreg)
+    var buffer bytes.Buffer
+    newContent := re.ReplaceAllStringFunc(oldContent, func(source string) string {
+        source = strings.Replace(source, `\`, `/`, -1)
+        //fmt.Println("匹配内容>", source)
+        result, err := filepath.Rel(currentPath, source)
+        result = strings.Replace(result, `\`, `/`, -1)
+        //fmt.Println("替换后内容>", result)
+        if err != nil {
+            buffer.WriteString("转换[" + currentPath + "]时发生错误[" + err.Error() + "]\n")
+            return source
+        }
+        return result
+    })
+    if buffer.Len() > 0 {
+        return newContent, errors.New(buffer.String())
+    }
+    return newContent, nil
 }
