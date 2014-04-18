@@ -13,10 +13,11 @@ import (
 func main() {
 	prefixPtr := flag.String("prefix", "", "需转换目录前缀")
 	locationPtr := flag.String("location", "", "需转换的VS解决方案根目录")
+	otypePtr := flag.Int("type", 1, "操作类型")
 	flag.Parse()
 	location := *locationPtr
 	prefix := *prefixPtr
-
+	otype := *otypePtr
 	if "" == location {
 		msg := "无法获取要转换的目录，请通过参数[location]指定"
 		exef, err := exec.LookPath(os.Args[0])
@@ -40,6 +41,12 @@ func main() {
 		fmt.Println(err.Error())
 		return
 	}
-	c.RemoveCMake()
-	c.ConvertorPath()
+	switch otype {
+	case 1:
+		c.ConvertorPath()
+	case 2:
+		c.RemoveCMake()
+	case 3:
+		c.ReplaceContent()
+	}
 }
