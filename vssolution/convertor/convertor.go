@@ -62,8 +62,8 @@ func (c *Convertor) ConvertorPath() error {
 	return walkPath(c.location, c.convertPath)
 }
 
-func (c *Convertor) ReplaceContent() error {
-	return walkPath(c.location, replace)
+func (c *Convertor) ReplaceContent(old, new string) error {
+	return walkPath(c.location, createReplaceFun(old, new))
 }
 
 //文件处理函数原型
@@ -172,19 +172,19 @@ func convertPathContent(rootPath, currentPath string, source string) (string, er
 	return target, nil
 }
 
-func replace(filename string) error {
-	fmt.Println("replace处理文件[" + filename + "]")
-	source, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return err
+// 创建替换函数
+func createReplaceFun(old, new string) processFileFunc {
+	return func(filename string) error {
+		fmt.Println("replace处理文件[" + filename + "]")
+		source, err := ioutil.ReadFile(filename)
+		if err != nil {
+			return err
+		}
+		target := strings.Replace(string(source), old, new, -1)
+		err = ioutil.WriteFile(filename, []byte(target), os.ModePerm)
+		if err != nil {
+			return err
+		}
+		return nil
 	}
-	target := strings.Replace(string(source), "soci_core_3_2", "soci_core", -1)
-	target = strings.Replace(target, "soci_mysql_3_2", "soci_mysql", -1)
-	target = strings.Replace(target, "soci_sqlite3_3_2", "soci_sqlite3", -1)
-	err = ioutil.WriteFile(filename, []byte(target), os.ModePerm)
-	if err != nil {
-		return err
-	}
-	return nil
-
 }
