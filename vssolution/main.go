@@ -23,8 +23,13 @@ func main() {
 	otype := *otypePtr
 	olds := *oldPtr
 	news := *newPtr
+
+	if "" == prefix {
+		fmt.Println("必须指定需转换目录前缀，格式: -prefix=XXX。")
+		return
+	}
 	if "" == location {
-		msg := "无法获取要转换的目录，请通过参数[location]指定"
+		msg := "要转换的目录非法，请核对-location参数值。"
 		exef, err := exec.LookPath(os.Args[0])
 		if err != nil {
 			fmt.Println(msg)
@@ -38,10 +43,10 @@ func main() {
 		location = filepath.Dir(abs)
 	}
 	if 3 == otype && "" == olds {
-		fmt.Println("必须指定被替换的字符串, 格式: -old=XXX")
+		fmt.Println("必须指定被替换的字符串, 格式: -old=XXX。")
 		return
 	}
-	fmt.Println("需要转换的VS解决方案根目录:", location)
+	fmt.Println("要转换的目录:", location)
 	if "" == prefix {
 		prefix = location
 	}
