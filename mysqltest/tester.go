@@ -18,7 +18,7 @@ import (
 const table_prefix = "t_data_unit"
 
 var debug bool = false
-
+
 // 数据库配置参数类
 type DbConfig struct {
 	DriverName string
