@@ -84,7 +84,7 @@ func initDbSchema(db *sql.DB, tablename string) error {
 
 // 从历史库查询数据
 func queryDataHistory(db *sql.DB, taskno int) (int32, error) {
-	sql := fmt.Sprintf("SELECT * FROM %s%d WHERE node_id=? AND value_time >= ? AND value_time < ? LIMIT 100", table_prefix, taskno)
+	sql := fmt.Sprintf("SELECT * FROM %s%d_0 WHERE node_id=? AND value_time >= ? AND value_time < ? LIMIT 100", table_prefix, taskno)
 	nodeid := fmt.Sprintf("%s%d:%d", table_prefix, taskno, rand.Intn(5000))
 	begin := time.Now().Add(-3600 * time.Second)
 	end := begin.Add(5 * time.Minute)
@@ -103,10 +103,10 @@ func queryDataHistory(db *sql.DB, taskno int) (int32, error) {
 }
 
 // 向历史数据表中批量插入数据
-func batchInsertDataHistory(db *sql.DB, taskno int, count int, batch int) (int, error) {
-	sqlpref := `INSERT INTO %s%d VALUES `
+func batchInsertDataHistory(db *sql.DB, taskno int, count int, batch int, tablename string) (int, error) {
+	sqlpref := `INSERT INTO %s VALUES `
 	var buffer bytes.Buffer
-	buffer.WriteString(fmt.Sprintf(sqlpref, table_prefix, taskno))
+	buffer.WriteString(fmt.Sprintf(sqlpref, tablename))
 	var i, ibatch int
 	sformat := "2006-01-02 15:04:05.000 "
 	stime := time.Now().Format(sformat)
@@ -130,7 +130,7 @@ func batchInsertDataHistory(db *sql.DB, taskno int, count int, batch int) (int, 
 				return i, err
 			}
 			buffer.Reset()
-			buffer.WriteString(fmt.Sprintf(sqlpref, table_prefix, taskno))
+			buffer.WriteString(fmt.Sprintf(sqlpref, tablename))
 		}
 	}
 	if ibatch > 0 {
@@ -171,7 +171,10 @@ func queryTask(db *sql.DB, taskno int, done <-chan bool) error {
 
 // 插入任务，每6秒钟插入5000条数据
 func insertTask(db *sql.DB, taskno int, done <-chan bool, batch int) error {
-	tablename := fmt.Sprintf("t_data_unit%d", taskno)
+	tablename := fmt.Sprintf("t_data_unit%d_%d", taskno, 0)
+	var million, total int
+	total = 0
+	million = 1000000
 	// 初始化数据库表结构
 	err := initDbSchema(db, tablename)
 	if err != nil {
@@ -186,8 +189,17 @@ func insertTask(db *sql.DB, taskno int, done <-chan bool, batch int) error {
 			}
 			return nil
 		case current := <-timer.C:
+			total += 5000
+			if total%million == 0 {
+				tablename = fmt.Sprintf("t_data_unit%d_%d", taskno, total/million)
+				err := initDbSchema(db, tablename)
+				if err != nil {
+					return errors.New(fmt.Sprintf("!插入任务[%02d]:创建数据库表[%s]出错。\n\t\t错误栈信息[%s]", taskno, tablename, err.Error()))
+					log.Printf("----------------插入任务[%02d]:成功插入一百万条数据-------------------", taskno)
+				}
+			}
 			begin := time.Now()
-			_, err := batchInsertDataHistory(db, taskno, 5000, batch)
+			_, err := batchInsertDataHistory(db, taskno, 5000, batch, tablename)
 			if err != nil {
 				return errors.New(fmt.Sprintf("!插入任务[%02d]:执行批量插入数据时出错。\n\t\t错误栈信息[%s]", taskno, err.Error()))
 			}
